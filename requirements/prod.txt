@@ -1,0 +1,5 @@
+-r base.txt
+
+gunicorn==19.9.0
+boto3
+django-storages
