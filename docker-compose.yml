@@ -31,6 +31,9 @@ services:
     volumes:
       - ./:/app
 
+  postgres:
+    image: 'postgres'
+
   nginx:
     restart: always
     build:

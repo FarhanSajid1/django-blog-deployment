@@ -135,3 +135,6 @@ EMAIL_USE_TLS = True
 
 EMAIL_HOST_USER = os.environ.get('GOOGLE_USER', '')
 EMAIL_HOST_PASSWORD = os.environ.get('GOOGLE_PASSWORD', '')
+
+
+
