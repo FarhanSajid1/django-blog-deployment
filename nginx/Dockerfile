@@ -1,4 +1,6 @@
 FROM nginx:latest
 
-
-COPY ./default.conf /etc/nginx/conf.d/default.conf
+RUN rm /etc/nginx/conf.d/default.conf*
+COPY nginx/default.conf /etc/nginx/conf.d/default.conf
+COPY django_project/media /var/www/blog/media
+EXPOSE 80

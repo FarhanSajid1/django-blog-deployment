@@ -21,7 +21,8 @@ services:
 
     command: gunicorn -w 4 django_project.wsgi -b 0.0.0.0:8990
     volumes:
-      - static_volume:/var/www/blog/static
+      - new_static_volume:/var/www/blog/static/
+      - new_media_volume:/var/www/blog/media
 
     depends_on:
       - postgres
@@ -32,15 +33,17 @@ services:
   nginx:
     restart: always
     build:
-      context: nginx
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: nginx/Dockerfile
     ports:
       - "8990:80"
     volumes:
-      - static_volume:/var/www/blog/static
+      - new_static_volume:/var/www/blog/static
+      - new_media_volume:/var/www/blog/media/
 
     depends_on:
       - app
 
 volumes:
-  static_volume:
+  new_static_volume:
+  new_media_volume:
