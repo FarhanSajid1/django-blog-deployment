@@ -8,14 +8,14 @@ services:
   - docker
 
 before_install:
-  - docker build -t farhansajid2/django-test -f ./docker/dev/Dockerfile.dev ./docker/dev
+  - docker build -t farhansajid2/django-test -f ./docker/dev/Dockerfile.dev .
 
 script:
   - docker run farhansajid2/django-test python manage.py test
 
 after_success:
-  - docker build -t farhansajid2/django-app ./docker/prod/
-  - docker build -t farhansajid2/django-nginx ./nginx/
+  - docker build -t farhansajid2/django-app -f ./docker/prod/Dockerfile .
+  - docker build -t farhansajid2/django-nginx -f ./nginx/Dockerfile .
 
   # Log in to docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
