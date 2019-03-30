@@ -20,4 +20,4 @@ ENTRYPOINT ["entrypoint.sh"]
 
 WORKDIR /app
 
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8990", "--settings=django_project.settings.test"]
+CMD gunicorn -w 4 django_project.wsgi -b 0.0.0.0:8990

@@ -14,7 +14,7 @@ DATABASES = {
     }
 }
 
-USE_S3 = True
+USE_S3 = False
 STATIC_URL = '/staticfiles/'
 STATIC_ROOT = '/var/www/blog/static/'
 
