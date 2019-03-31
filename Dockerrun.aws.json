@@ -67,7 +67,8 @@
 			"essential": true,
 			"name": "app",
 			"hostname": "app",
-			"image": "farhansajid2/django-app"
+			"image": "farhansajid2/django-app",
+            "memory": 128
 		},
 		{
 			"essential": true,
