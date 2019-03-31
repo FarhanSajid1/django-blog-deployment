@@ -34,6 +34,7 @@ ENV DJANGO_SETTINGS_MODULE=django_project.settings.production PGUSER=postgres\
       SECRET_KEY='afoiajsfoija84284uijskflkamlfkmaskfjaofjoa'
 
 
+CMD gunicorn -w 4 -b 0.0.0.0:8990 django_project.wsgi --env DJANGO_SETTINGS_MODULE=django_project.settings.production
 #CMD gunicorn --bind 0.0.0.0:8990 django_project.wsgi
 
 

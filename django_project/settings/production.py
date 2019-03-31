@@ -7,7 +7,7 @@ SECRET_KEY = 'afoiajsfoija84284uijskflkamlfkmaskfjaofjoa'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.environ.get('PGDATABASE'),
+        'NAME': os.environ.get('PGDATABASE', ),
         'USER': os.environ.get('PGUSER'),
         'PASSWORD': os.environ.get('PGPASSWORD'),
         'PORT': os.environ.get('PGPORT'),
@@ -16,7 +16,7 @@ DATABASES = {
 }
 
 ALLOWED_HOSTS = [
-    '*'
+    '*.elb.amazonaws.com'
 ]
 # static/media urls and roots for production
 MEDIA_ROOT = '/var/www/blog/media/'
