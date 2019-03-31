@@ -20,4 +20,23 @@ ENTRYPOINT ["entrypoint.sh"]
 
 WORKDIR /app
 
-CMD gunicorn -b 0.0.0.0:8990 django_project.wsgi
+CMD PYTHONPATH=`pwd` gunicorn -b 0.0.0.0:8990 --env DJANGO_SETTINGS_MODULE=django_project.settings.production django_project.wsgi:blog
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
