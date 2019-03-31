@@ -20,4 +20,4 @@ ENTRYPOINT ["entrypoint.sh"]
 
 WORKDIR /app
 
-CMD gunicorn -w 4 django_project.wsgi -b 0.0.0.0:8990
+CMD gunicorn -b 0.0.0.0:8990 -w 4 django_project.wsgi
