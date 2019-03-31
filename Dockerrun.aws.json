@@ -5,7 +5,7 @@
       "name": "app",
       "image": "farhansajid2/django-app",
       "hostname": "app",
-      "essential": true,
+      "essential": false,
       "memory": 128
     },
     {

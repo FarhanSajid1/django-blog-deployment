@@ -27,9 +27,9 @@ after_success:
 
 deploy:
   provider: elasticbeanstalk
-  region: us-east-2
-  app: django-blog
-  env: DjangoBlog-env
+  region: "us-east-2"
+  app: "django-blog"
+  env: "DjangoBlog-env"
   bucket_name: "elasticbeanstalk-us-east-2-250900492900"
   bucket_path: "django-blog"
   on:
