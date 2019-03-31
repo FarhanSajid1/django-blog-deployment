@@ -20,6 +20,7 @@ services:
       - DJANGO_SETTINGS_MODULE=django_project.settings.production # production environment
       - USE_S3=TRUE
       - SECRET_KEY='afoiajsfoija84284uijskflkamlfkmaskfjaofjoa'
+
     command: gunicorn -w 4 django_project.wsgi -b 0.0.0.0:8990
     depends_on:
       - postgres

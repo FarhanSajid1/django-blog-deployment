@@ -7,11 +7,11 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.environ.get('postgres', 'postgres'),
-        'USER': os.environ.get('DB_USER', 'postgres'),
-        'PASSWORD': os.environ.get('DB_PASS', 'postgres_password'),
-        'PORT': '5432',
-        'HOST': 'postgres'
+        'NAME': os.environ.get('PGDATABASE'),
+        'USER': os.environ.get('PGUSER'),
+        'PASSWORD': os.environ.get('PGPASSWORD'),
+        'PORT': os.environ.get('PGPORT'),
+        'HOST': os.environ.get('PGHOST')
     }
 }
 
