@@ -1,8 +1,8 @@
 from .base import *
 
-DEBUG = True
+DEBUG = False
 
-SECRET_KEY =  'afoiajsfoija84284uijskflkamlfkmaskfjaofjoa'
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 DATABASES = {
     'default': {
@@ -21,11 +21,12 @@ ALLOWED_HOSTS = [
 # static/media urls and roots for production
 MEDIA_ROOT = '/var/www/blog/media/'
 
-STATIC_URL = '/staticfiles/'
+STATIC_URL = '/static/'
 STATIC_ROOT = '/var/www/blog/static/'
 
 
-USE_S3 = True
+# USE_S3 = True
+USE_S3 = os.environ.get('USE_S3')
 if USE_S3:
     # aws settings
     INSTALLED_APPS += ['storages']
