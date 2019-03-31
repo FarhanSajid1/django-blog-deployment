@@ -1,5 +1,5 @@
 {
-    "AWSEBDockerrunVersion": 2,
+	"AWSEBDockerrunVersion": 2,
 	"containerDefinitions": [{
 			"command": [
 				"gunicorn",
@@ -66,10 +66,12 @@
 			],
 			"essential": true,
 			"name": "app",
-			"hostname": "app"
+			"hostname": "app",
+			"image": "farhansajid2/django-app"
 		},
 		{
 			"essential": true,
+			"image": "farhansajid2/django-nginx",
 			"name": "nginx",
 			"memory": 128,
 			"hostname": "nginx",
