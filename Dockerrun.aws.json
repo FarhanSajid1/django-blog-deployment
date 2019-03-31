@@ -1,5 +1,5 @@
 {
-	"AWSEBDockerrunVersion": 2,
+	"AWSEBDockerrunVersion": "2",
 	"containerDefinitions": [{
 			"command": [
 				"gunicorn",
@@ -17,15 +17,15 @@
 				},
 				{
 					"name": "PGHOST",
-					"value": "multi-docker-django.c7b9crezm2hx.us-east-2.rds.amazonaws.com"
+					"value": "postgres"
 				},
 				{
 					"name": "PGDATABASE",
-					"value": "django_blog"
+					"value": "postgres"
 				},
 				{
 					"name": "PGPASSWORD",
-					"value": "postgrespassword"
+					"value": "postgres_password"
 				},
 				{
 					"name": "PGPORT",
@@ -65,22 +65,31 @@
 				}
 			],
 			"essential": true,
+			"image": "farhansajid2/django-app",
+			"links": [
+				"postgres"
+			],
 			"name": "app",
 			"hostname": "app",
-			"image": "farhansajid2/django-app",
-            "memory": 128
+			"memory": 128
 		},
 		{
 			"essential": true,
 			"image": "farhansajid2/django-nginx",
 			"name": "nginx",
-			"memory": 128,
-			"hostname": "nginx",
+			"memory": "128",
 			"portMappings": [{
 				"containerPort": 80,
-				"hostPort": 80
+				"hostPort": 9000
 			}]
+		},
+		{
+			"essential": true,
+			"image": "postgres",
+			"name": "postgres",
+			"memory": 128
 		}
-	]
-
+	],
+	"family": "",
+	"volumes": []
 }
