@@ -16,7 +16,9 @@ DATABASES = {
 }
 
 ALLOWED_HOSTS = [
-    'http://deployment-env.jt2r2hfekg.us-east-2.elasticbeanstalk.com/'
+    'http://deployment-env.jt2r2hfekg.us-east-2.elasticbeanstalk.com/',
+    '.compute-1.amazonaws.com',
+    '.elasticbeanstalk.com'
 ]
 # static/media urls and roots for production
 MEDIA_ROOT = '/var/www/blog/media/'
