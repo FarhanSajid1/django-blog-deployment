@@ -23,3 +23,17 @@ after_success:
   # Push images to Docker hub
   - docker push farhansajid2/django-app
   - docker push farhansajid2/django-nginx
+
+
+deploy:
+  provider: elasticbeanstalk
+  region: us-east-2
+  app: django-blog
+  env: DjangoBlog-env
+  bucket_name: "elasticbeanstalk-us-east-2-250900492900"
+  bucket_path: "django-blog"
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key:
+    secure: "$AWS_SECRET_KEY"
