@@ -4,6 +4,7 @@ services:
   app:
     image: "farhansajid2/django-app"
 
+
     environment:
       - PGUSER=postgres
       - PGHOST=postgres

@@ -53,6 +53,8 @@ services:
       - new_static_volume:/var/www/blog/static/
       - new_media_volume:/var/www/blog/media/
 
+
+
 volumes:
   new_static_volume:
   new_media_volume:
