@@ -1,26 +1,26 @@
 {
-  "AWSEBDockerrunVersion": 2,
-  "containerDefinitions":[
-    {
-      "name": "app",
-      "image": "farhansajid2/django-app",
-      "hostname": "app",
-      "essential": false,
-      "memory": 128
-    },
-    {
-      "name": "nginx",
-      "image": "farhansajid2/django-nginx",
-      "hostname": "nginx",
-      "essential": true,
-      "portMappings": [
-        {
-          "hostPort": 80,
-          "containerPort": 80
-        }
-      ],
-      "links": ["app"],
-      "memory": 128
-    }
-  ]
+	"AWSEBDockerrunVersion": 2,
+	"containerDefinitions": [{
+			"name": "app",
+			"image": "farhansajid2/django-app",
+			"hostname": "app",
+			"essential": false,
+			"memory": 128,
+			"command": ["gunicorn", "-w", "4", "-b", "0.0.0.0:8990", "--env", "DJANGO_SETTINGS_MODULE=django_project.settings.production",
+				"django_project.wsgi"
+			]
+		},
+		{
+			"name": "nginx",
+			"image": "farhansajid2/django-nginx",
+			"hostname": "nginx",
+			"essential": true,
+			"portMappings": [{
+				"hostPort": 80,
+				"containerPort": 80
+			}],
+			"links": ["app"],
+			"memory": 128
+		}
+	]
 }

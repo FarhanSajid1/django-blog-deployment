@@ -19,8 +19,22 @@ EXPOSE 8990
 ENTRYPOINT ["entrypoint.sh"]
 
 WORKDIR /app
+ENV DJANGO_SETTINGS_MODULE=django_project.settings.production PGUSER=postgres\
+      PGHOST=postgres\
+      PGDATABASE=postgres\
+      PGPASSWORD=postgres_password\
+      PGPORT=5432\
+      GOOGLE_PASSWORD=${GOOGLE_PASSWORD}\
+      GOOGLE_USER=${GOOGLE_USER}\
+      AWS_STORAGE_BUCKET_NAME=${AWS_STORAGE_BUCKET_NAME}\
+      AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}\
+      AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}\
+      DJANGO_SETTINGS_MODULE=django_project.settings.production\
+      USE_S3=TRUE\
+      SECRET_KEY='afoiajsfoija84284uijskflkamlfkmaskfjaofjoa'
 
-CMD PYTHONPATH=`pwd` gunicorn -b 0.0.0.0:8990 --env DJANGO_SETTINGS_MODULE=django_project.settings.production django_project.wsgi:blog
+CMD PYTHONPATH=`pwd` gunicorn -w 4 -b 0.0.0.0:8990 --env DJANGO_SETTINGS_MODULE=django_project.settings.production django_project.wsgi
+#CMD gunicorn --bind 0.0.0.0:8990 django_project.wsgi
 
 
 

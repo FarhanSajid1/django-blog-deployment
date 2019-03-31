@@ -1,0 +1,26 @@
+{
+  "AWSEBDockerrunVersion": 2,
+  "containerDefinitions":[
+    {
+      "name": "app",
+      "image": "farhansajid2/django-app",
+      "hostname": "app",
+      "essential": false,
+      "memory": 128,
+    },
+    {
+      "name": "nginx",
+      "image": "farhansajid2/django-nginx",
+      "hostname": "nginx",
+      "essential": true,
+      "portMappings": [
+        {
+          "hostPort": 80,
+          "containerPort": 80
+        }
+      ],
+      "links": ["app"],
+      "memory": 128
+    }
+  ]
+}
