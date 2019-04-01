@@ -1,0 +1,60 @@
+version: '3'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: docker/dev/Dockerfile.dev
+
+    environment:
+      - PGUSER=postgres
+      - PGHOST=postgres
+      - PGDATABASE=postgres
+      - PGPASSWORD=postgres_password
+      - PGPORT=5432
+      - GOOGLE_PASSWORD=${GOOGLE_PASSWORD}
+      - GOOGLE_USER=${GOOGLE_USER}
+      - DJANGO_SETTINGS_MODULE=django_project.settings.test # the mysql settings
+      - AWS_STORAGE_BUCKET_NAME=${AWS_STORAGE_BUCKET_NAME}
+      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+      - USE_S3=TRUE
+
+    volumes:
+      - ./:/app
+      - new_static_volume:/var/www/blog/static/
+      - new_media_volume:/var/www/blog/media
+
+
+    ports:
+      - '8990:8990'
+
+  test:
+    build:
+      context: .
+      dockerfile: docker/dev/Dockerfile.dev
+
+    command: ["python", "manage.py", "test"]
+    volumes:
+      - ./:/app
+
+  postgres:
+    image: 'postgres'
+
+  nginx:
+    restart: always
+    build:
+      context: .
+      dockerfile: nginx/Dockerfile.dev
+    ports:
+      - "9000:80"
+
+    volumes:
+      - new_static_volume:/var/www/blog/static/
+      - new_media_volume:/var/www/blog/media/
+
+
+
+volumes:
+  new_static_volume:
+  new_media_volume:
