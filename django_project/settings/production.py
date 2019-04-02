@@ -29,7 +29,7 @@ STATIC_ROOT = '/var/www/blog/static/'
 
 
 # USE_S3 = True
-USE_S3 = os.environ.get('USE_S3')
+USE_S3 = os.environ.get('USE_S3', True)
 if USE_S3:
     # aws settings
     INSTALLED_APPS += ['storages']
